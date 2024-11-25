@@ -296,7 +296,7 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
       //Swift iOS
       var info = [String: Any?]()
       info["id"] = "44d915e1-5ff4-4bed-bf13-c423048ec97a"
-      info["nameCaller"] = "Hien Nguyen"
+      info["nameCaller"] = "Ahmed Magdy"
       info["handle"] = "0123456789"
       info["type"] = 1
       //... set more data
@@ -316,7 +316,7 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
 
     ```swift
       //OR
-      let data = flutter_callkit_incoming.Data(id: "44d915e1-5ff4-4bed-bf13-c423048ec97a", nameCaller: "Hien Nguyen", handle: "0123456789", type: 0)
+      let data = flutter_callkit_incoming.Data(id: "44d915e1-5ff4-4bed-bf13-c423048ec97a", nameCaller: "Ahmed Magdy", handle: "0123456789", type: 0)
       data.nameCaller = "Johnny"
       data.extra = ["user": "abc@123", "platform": "ios"]
       //... set more data
@@ -333,7 +333,7 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
       #import "flutter_callkit_incoming-Swift.h"
       #endif
 
-      Data * data = [[Data alloc]initWithId:@"44d915e1-5ff4-4bed-bf13-c423048ec97a" nameCaller:@"Hien Nguyen" handle:@"0123456789" type:1];
+      Data * data = [[Data alloc]initWithId:@"44d915e1-5ff4-4bed-bf13-c423048ec97a" nameCaller:@"Ahmed Magdy" handle:@"0123456789" type:1];
       [data setNameCaller:@"Johnny"];
       [data setExtra:@{ @"userId" : @"HelloXXXX", @"key2" : @"value2"}];
       //... set more data

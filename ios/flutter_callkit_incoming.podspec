@@ -3,15 +3,15 @@
 # Run `pod lib lint flutter_callkit_incoming.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'flutter_callkit_incoming'
+  s.name             = 'notification_calling'
   s.version          = '0.0.1'
-  s.summary          = 'Flutter Callkit Incoming'
+  s.summary          = 'Notification Calling'
   s.description      = <<-DESC
 Flutter Callkit Incoming
                        DESC
-  s.homepage         = 'https://github.com/hiennguyen92/flutter_callkit_incoming'
+  s.homepage         = 'https://github.com/A-M-Packages/Notification-Calling'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Hien Nguyen' => 'hien@hiennv.com' }
+  s.author           = { 'Ahmed Magdy' => 'ahmedmagdy99101work@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'

@@ -134,7 +134,7 @@ class HomePageState extends State<HomePage> {
 
       final params = CallKitParams(
         id: _currentUuid,
-        nameCaller: 'Hien Nguyen',
+        nameCaller: 'Ahmed Magdy',
         appName: 'Callkit',
         avatar: 'https://i.pravatar.cc/100',
         handle: '0123456789',
@@ -193,7 +193,7 @@ class HomePageState extends State<HomePage> {
     _currentUuid = _uuid.v4();
     final params = CallKitParams(
       id: _currentUuid,
-      nameCaller: 'Hien Nguyen',
+      nameCaller: 'Ahmed Magdy',
       handle: '0123456789',
       type: 1,
       extra: <String, dynamic>{'userId': '1a2b3c4d'},
