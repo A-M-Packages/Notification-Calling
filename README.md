@@ -74,12 +74,12 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
 3. Usage
   * Import
     ```console
-    import 'package:flutter_callkit_incoming/flutter_callkit_incoming.dart';
+    import 'package:notification_calling/flutter_callkit_incoming.dart';
     ```
   * Received an incoming call
     ```dart
-      CallKitParams callKitParams = CallKitParams(
-       id: notificationData['callId'],
+      CallKitParams params = CallKitParams(
+      id: notificationData['callId'],
       nameCaller: notificationData['callerName'],
       appName: "app name",
       // avatar: 'ic_default_avatar.png',
@@ -150,10 +150,10 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
 
   * Show miss call notification
     ```dart
-      this._currentUuid = _uuid.v4();
+      
       CallKitParams params = CallKitParams(
-        id: _currentUuid,
-        nameCaller: 'Hien Nguyen',
+        id: notificationData['callId'],
+        nameCaller: notificationData['callerName'],
         handle: '0123456789',
         type: 1,
         textMissedCall: 'Missed call',
@@ -172,10 +172,10 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
 
   * Started an outgoing call
     ```dart
-      this._currentUuid = _uuid.v4();
+     
       CallKitParams params = CallKitParams(
-        id: this._currentUuid,
-        nameCaller: 'Hien Nguyen',
+        id: notificationData['callId'],
+        nameCaller: notificationData['callerName'],
         handle: '0123456789',
         type: 1,
         extra: <String, dynamic>{'userId': '1a2b3c4d'},
@@ -186,7 +186,7 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
 
   * Ended an incoming/outgoing call
     ```dart
-      await FlutterCallkitIncoming.endCall(this._currentUuid);
+      await FlutterCallkitIncoming.endCall(notificationData['callId']);
     ```
 
   * Ended all calls
@@ -220,7 +220,7 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
     <device token>
 
     //Example
-"    d6a77ca80c5f09f87f353cdd328ec8d7d34e92eb108d046c91906f27f54949cd"
+   d6a77ca80c5f09f87f353cdd328ec8d7d34e92eb108d046c91906f27f54949cd
 
     ```
     Make sure using `SwiftFlutterCallkitIncomingPlugin.sharedInstance?.setDevicePushTokenVoIP(deviceToken)` inside AppDelegate.swift (<a href="https://github.com/A-M-Packages/Notification-Calling/blob/master/example/ios/Runner/AppDelegate.swift">Example</a>)
