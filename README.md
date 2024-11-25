@@ -2,20 +2,20 @@
 
 A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Callkit for iOS).
 
-[![pub package](https://img.shields.io/pub/v/flutter_callkit_incoming.svg)](https://pub.dev/packages/flutter_callkit_incoming)
-[![pub points](https://img.shields.io/pub/points/flutter_callkit_incoming?label=pub%20points)](https://pub.dev/packages/flutter_callkit_incoming/score)
-[![GitHub stars](https://img.shields.io/github/stars/hiennguyen92/flutter_callkit_incoming.svg?style=social)](https://github.com/hiennguyen92/flutter_callkit_incoming/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/hiennguyen92/flutter_callkit_incoming.svg?style=social)](https://github.com/hiennguyen92/flutter_callkit_incoming/network)
-[![GitHub license](https://img.shields.io/github/license/hiennguyen92/flutter_callkit_incoming.svg)](https://github.com/hiennguyen92/flutter_callkit_incoming/blob/master/LICENSE)
-[![Build Status](https://github.com/A-M-Packages/Notification-Calling/actions/workflows/main.yml/badge.svg)](https://github.com/hiennguyen92/flutter_callkit_incoming/actions/workflows/main.yml)
+[//]: # ([![pub package]&#40;https://img.shields.io/pub/v/flutter_callkit_incoming.svg&#41;]&#40;https://pub.dev/packages/flutter_callkit_incoming&#41;)
 
+[//]: # ([![pub points]&#40;https://img.shields.io/pub/points/flutter_callkit_incoming?label=pub%20points&#41;]&#40;https://pub.dev/packages/flutter_callkit_incoming/score&#41;)
+
+[//]: # ([![GitHub stars]&#40;https://img.shields.io/github/stars/hiennguyen92/flutter_callkit_incoming.svg?style=social&#41;]&#40;https://github.com/A-M-Packages/Notification-Calling/stargazers&#41;)
+
+[//]: # ([![GitHub forks]&#40;https://img.shields.io/github/forks/hiennguyen92/flutter_callkit_incoming.svg?style=social&#41;]&#40;https://github.com/A-M-Packages/Notification-Calling/network&#41;)
+
+[//]: # ([![GitHub license]&#40;https://img.shields.io/github/license/hiennguyen92/flutter_callkit_incoming.svg&#41;]&#40;https://github.com/A-M-Packages/Notification-Calling/blob/master/LICENSE&#41;)
 
 ## :star: Features
 
 * Show an incoming call
-* Start an outgoing call
-* Custom UI Android/Callkit for iOS
-* Example using Pushkit/VoIP for iOS
+
 
   <br>
 
@@ -29,12 +29,12 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
 
   * Run this command:
     ```console
-    flutter pub add flutter_callkit_incoming
+    flutter pub add notification_calling
     ```
     * Add pubspec.yaml:
       ```console
           dependencies:
-            flutter_callkit_incoming: any
+            notification_calling: any
       ```
       2. Configure Project
          * Android
@@ -78,55 +78,57 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
     ```
   * Received an incoming call
     ```dart
-      this._currentUuid = _uuid.v4();
       CallKitParams callKitParams = CallKitParams(
-        id: _currentUuid,
-        nameCaller: 'Hien Nguyen',
-        appName: 'Callkit',
-        avatar: 'https://i.pravatar.cc/100',
-        handle: '0123456789',
-        type: 0,
-        textAccept: 'Accept',
-        textDecline: 'Decline',
-        missedCallNotification: NotificationParams(
-            showNotification: true,
-            isShowCallback: true,
-            subtitle: 'Missed call',
-            callbackText: 'Call back',
-        ),
-        duration: 30000,
-        extra: <String, dynamic>{'userId': '1a2b3c4d'},
-        headers: <String, dynamic>{'apiKey': 'Abc@123!', 'platform': 'flutter'},
-        android: const AndroidParams(
-            isCustomNotification: true,
-            isShowLogo: false,
-            ringtonePath: 'system_ringtone_default',
-            backgroundColor: '#0955fa',
-            backgroundUrl: 'https://i.pravatar.cc/500',
-            actionColor: '#4CAF50',
-            textColor: '#ffffff',
-            incomingCallNotificationChannelName: "Incoming Call",
-            missedCallNotificationChannelName: "Missed Call",
-            isShowCallID: false
-        ),
-        ios: IOSParams(
-          iconName: 'CallKitLogo',
-          handleType: 'generic',
-          supportsVideo: true,
-          maximumCallGroups: 2,
-          maximumCallsPerCallGroup: 1,
-          audioSessionMode: 'default',
-          audioSessionActive: true,
-          audioSessionPreferredSampleRate: 44100.0,
-          audioSessionPreferredIOBufferDuration: 0.005,
-          supportsDTMF: true,
-          supportsHolding: true,
-          supportsGrouping: false,
-          supportsUngrouping: false,
-          ringtonePath: 'system_ringtone_default',
-        ),
-      );
-      await FlutterCallkitIncoming.showCallkitIncoming(callKitParams);
+       id: notificationData['callId'],
+      nameCaller: notificationData['callerName'],
+      appName: "app name",
+      // avatar: 'ic_default_avatar.png',
+      avatar: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPTs9UbgJg34C5wSSFIgtJwpOJENS6D0lcBkBNhmBzIn_4OWsVNfyHCFRwEcgcKwid1L8u-6n3TRRbHWkvtLxjdN7ylmMCiCN7sXGgQdT_pJKARsZw2XCd4BjEgTBXvFhYVGBBYR1B9jqmgW9upqNbh_82pb-jTjjWGtfJKaCGhIRn2Tq4FMsUwi2IZbZj/s512/user.png',
+      handle: 'inComing call',
+      type: notificationData['callType'] == 'voice' ? 0 : 1,
+      duration: 30000,
+      textAccept: 'Accept',
+      textDecline: 'Decline',
+      missedCallNotification: const NotificationParams(
+        showNotification: true,
+        isShowCallback: false,
+        subtitle: 'Missed call',
+        // callbackText: 'Call back',
+      ),
+      extra: notificationData,
+
+      headers: <String, dynamic>{'apiKey': 'Abc@123!', 'platform': 'flutter'},
+      android: const AndroidParams(
+        isCustomNotification: true,
+        isShowLogo: true,
+        incomingCallNotificationChannelName: "Incoming Call",
+        isCustomSmallExNotification: true,
+        isShowFullLockedScreen: true,
+        ringtonePath: 'incoming_call',
+        // backgroundColor: '#0955fa',
+        backgroundUrl: 'assets/images/call_background.jpg',
+        actionColor: '#4CAF50',
+        textColor: '#ffffff',
+      ),
+      ios: const IOSParams(
+        iconName: 'app name',
+
+        // handleType: '',
+        supportsVideo: true,
+        maximumCallGroups: 2,
+        maximumCallsPerCallGroup: 1,
+        audioSessionMode: 'default',
+        audioSessionActive: true,
+        audioSessionPreferredSampleRate: 44100.0,
+        audioSessionPreferredIOBufferDuration: 0.005,
+        supportsDTMF: true,
+        supportsHolding: true,
+        supportsGrouping: false,
+        supportsUngrouping: false,
+        ringtonePath: 'incoming_call',
+      ),
+    );
+    await FlutterCallkitIncoming.showCallkitIncoming(params);
     ```
     Note: Firebase Message: `@pragma('vm:entry-point')` <br/>
     https://github.com/firebase/flutterfire/blob/master/docs/cloud-messaging/receive.md#apple-platforms-and-android
@@ -218,10 +220,10 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
     <device token>
 
     //Example
-    d6a77ca80c5f09f87f353cdd328ec8d7d34e92eb108d046c91906f27f54949cd
+"    d6a77ca80c5f09f87f353cdd328ec8d7d34e92eb108d046c91906f27f54949cd"
 
     ```
-    Make sure using `SwiftFlutterCallkitIncomingPlugin.sharedInstance?.setDevicePushTokenVoIP(deviceToken)` inside AppDelegate.swift (<a href="https://github.com/hiennguyen92/flutter_callkit_incoming/blob/master/example/ios/Runner/AppDelegate.swift">Example</a>)
+    Make sure using `SwiftFlutterCallkitIncomingPlugin.sharedInstance?.setDevicePushTokenVoIP(deviceToken)` inside AppDelegate.swift (<a href="https://github.com/A-M-Packages/Notification-Calling/blob/master/example/ios/Runner/AppDelegate.swift">Example</a>)
     ```swift
     func pushRegistry(_ registry: PKPushRegistry, didUpdate credentials: PKPushCredentials, for type: PKPushType) {
         print(credentials.token)
@@ -237,7 +239,7 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
     ```
 
 
-  * Listen events
+  * Listen events ( work only in Foreground & Background  Mode)
     ```dart
       FlutterCallkitIncoming.onEvent.listen((CallEvent event) {
         switch (event!.event) {
@@ -457,7 +459,7 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
     ...
 
     ``` 
-    <a href='https://github.com/hiennguyen92/flutter_callkit_incoming/blob/master/example/ios/Runner/AppDelegate.swift'>Please check full: Example</a>
+    <a href='https://github.com/A-M-Packages/Notification-Calling/blob/master/example/ios/Runner/AppDelegate.swift'>Please check full: Example</a>
 
 4. Properties
 
@@ -527,76 +529,8 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
     |           **`ringtonePath`**              | Add file to root project xcode  `/ios/Runner/Ringtone.caf`  and Copy Bundle Resources(Build Phases)                                                                                                               |`Ringtone.caf`<br>`system_ringtone_default` <br>using ringtone default of the phone|
 
 
-5. Source code
 
-    ```
-    please checkout repo github
-    https://github.com/hiennguyen92/flutter_callkit_incoming
-    ```
-    * <a href='https://github.com/hiennguyen92/flutter_callkit_incoming'>https://github.com/hiennguyen92/flutter_callkit_incoming</a>
-    * <a href='https://github.com/hiennguyen92/flutter_callkit_incoming/blob/master/example/lib/main.dart'>Example</a>
+5. Pushkit - Received VoIP and Wake app from Terminated State (only for IOS)
+  * Please check <a href="https://github.com/A-M-Packages/Notification-Calling/blob/master/PUSHKIT.md">PUSHKIT.md</a> setup Pushkit for IOS
 
   <br>
-
-6. Pushkit - Received VoIP and Wake app from Terminated State (only for IOS)
-  * Please check <a href="https://github.com/hiennguyen92/flutter_callkit_incoming/blob/master/PUSHKIT.md">PUSHKIT.md</a> setup Pushkit for IOS
-
-  <br>
-
-7. Todo
-  * Run background
-  * Simplify the setup process
-
-    <br>
-
-## :bulb: Demo
-
-1. Demo Illustration:
-2. Image
-<table>
-  <tr>
-    <td>iOS(Lockscreen)</td>
-    <td>iOS(full screen)</td>
-    <td>iOS(Alert)</td>
-  </tr>
-  <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/hiennguyen92/flutter_callkit_incoming/master/images/image1.png" width="220">
-    </td>
-    <td>
-      <img src="https://raw.githubusercontent.com/hiennguyen92/flutter_callkit_incoming/master/images/image2.png" width="220">
-    </td>
-    <td>
-      <img src="https://raw.githubusercontent.com/hiennguyen92/flutter_callkit_incoming/master/images/image3.png" width="220">
-    </td>
-  </tr>
-  <tr>
-    <td>Android(Lockscreen) - Audio</td>
-    <td>Android(Alert) - Audio</td>
-    <td>Android(Lockscreen) - Video</td>
-  </tr>
-  <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/hiennguyen92/flutter_callkit_incoming/master/images/image4.jpg" width="220">
-    </td>
-    <td>
-      <img src="https://raw.githubusercontent.com/hiennguyen92/flutter_callkit_incoming/master/images/image5.jpg" width="220">
-    </td>
-    <td>
-      <img src="https://raw.githubusercontent.com/hiennguyen92/flutter_callkit_incoming/master/images/image6.jpg" width="220">
-    </td>
-  </tr>
-  <tr>
-    <td>Android(Alert) - Video</td>
-    <td>isCustomNotification: false</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/hiennguyen92/flutter_callkit_incoming/master/images/image7.jpg" width="220">
-    </td>
-    <td>
-      <img src="https://raw.githubusercontent.com/hiennguyen92/flutter_callkit_incoming/master/images/image8.jpg" width="220">
-    </td>
-  </tr>
- </table>
