@@ -220,7 +220,7 @@ A Flutter plugin to show incoming call in your Flutter app(Custom for Android/Ca
     <device token>
 
     //Example
-   d6a77ca80c5f09f87f353cdd328ec8d7d34e92eb108d046c91906f27f54949cd
+      d6a77ca80c5f09f87f353cdd328ec8d7d34e92eb108d046c91906f27f54949cd
 
     ```
     Make sure using `SwiftFlutterCallkitIncomingPlugin.sharedInstance?.setDevicePushTokenVoIP(deviceToken)` inside AppDelegate.swift (<a href="https://github.com/A-M-Packages/Notification-Calling/blob/master/example/ios/Runner/AppDelegate.swift">Example</a>)
